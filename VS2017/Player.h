@@ -1,4 +1,5 @@
 #pragma once
+#include "Bullet.h"
 #include "Assets.h"
 
 class Player

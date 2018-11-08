@@ -49,6 +49,7 @@ void Player::inputCtrl(Event event)
 
 void Player::shootCtrl()
 {
+	Bullet b = {this->x ,this->y};
 }
 
 void Player::Draw(RenderWindow &renderWindow,float x,float y)
