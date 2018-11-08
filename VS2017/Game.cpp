@@ -7,6 +7,8 @@ void Game::Go()
 	Clock clock;
 	while (renderWindow.isOpen())
 	{
+		int curTime = clock.restart().asSeconds();
+		int fps = 1.0 / curTime;
 		Update();
 		renderWindow.clear();
 		Draw();

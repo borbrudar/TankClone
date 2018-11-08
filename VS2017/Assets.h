@@ -13,9 +13,8 @@ public:
 public:
 	Texture error;
 	Texture t1;
-	Texture bul1;
-	Sprite bul;
 	Sprite s1;
+	Sprite s2;
 public:
 	void loadTextures();
 	void loadSprites();
