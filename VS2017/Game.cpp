@@ -3,14 +3,13 @@
 void Game::Go()
 {
 	renderWindow.create(VideoMode(screenWidth, screenHeight), "Tank game");
+	renderWindow.setVerticalSyncEnabled(true);
+	renderWindow.setFramerateLimit(60);
 	//GAME LOOP
-	Clock clock;
 	while (renderWindow.isOpen())
 	{
-		int curTime = clock.restart().asSeconds();
-		int fps = 1.0 / curTime;
 		Update();
-		renderWindow.clear();
+		renderWindow.clear(Color::Color::White);
 		Draw();
 		renderWindow.display();
 	}

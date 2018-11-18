@@ -22,8 +22,8 @@ void Player::inputCtrl(Event event)
 		}
 	}
 
-	if (upF) as.s1.setPosition(x += (float)std::cos(deg * (3.13159 / 180.0f)) * speed, y += (float)std::sin(deg * (3.14158 / 180.0f)) * speed);
-	if (downF) as.s1.setPosition(x += -(float)(std::cos(deg * (3.13159 / 180.0f)) * (speed / 2)), y += -(float)(std::sin(deg * (3.14158 / 180.0f)) * (speed / 2)));
+	if (upF) as.s1.setPosition(x += (float)std::cos(deg * (3.14159 / 180.0f)) * speed, y += (float)std::sin(deg * (3.14158 / 180.0f)) * speed);
+	if (downF) as.s1.setPosition(x += -(float)(std::cos(deg * (3.14159 / 180.0f)) * (speed / 2)), y += -(float)(std::sin(deg * (3.14158 / 180.0f)) * (speed / 2)));
 	if (leftF) as.s1.setRotation(deg -= 4.0f);
 	if (rightF) as.s1.setRotation(deg += 4.0f);
 
@@ -45,15 +45,15 @@ void Player::inputCtrl(Event event)
 			break;
 		}
 	}
+
+	bul.moveCtrl(event);
 }
 
-void Player::shootCtrl()
-{
-}
 
 void Player::Draw(RenderWindow &renderWindow,float x,float y)
 {
 	as.s1.setPosition(Vector2f(x, y));
+	bul.Draw(renderWindow, as, x, y, deg);
 	renderWindow.draw(as.s1);
 }
 
