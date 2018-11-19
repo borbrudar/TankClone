@@ -37,7 +37,7 @@ void Game::Update()
 		case Event::Closed:
 			renderWindow.close();
 		}
-		player1.inputCtrl(event);
+		player1.inputCtrl(event,lvl);
 	}
 }
 

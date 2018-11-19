@@ -15,8 +15,9 @@ public:
 	{
 		as.s1.setOrigin(as.s1.getGlobalBounds().width / 2, as.s1.getGlobalBounds().height / 2);
 	}
-	void inputCtrl(Event event); //Handles player input
+	void inputCtrl(Event event,Level &lvl); //Handles player input
 	void Draw(RenderWindow &renderWindow,Level &lvl,float x,float y); //Handles drawing
+	void collision(Assets &as,Level &lvl);
 	//Getters
 	float getX();
 	float getY();

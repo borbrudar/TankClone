@@ -60,5 +60,45 @@ bool Bullet::isColliding(Assets &as, Level &lvl)
 			as.bul.move(Vector2f(bulX = std::cos((bulDeg -= 90.0f) * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed));
 			return true;
 		}
+	if (as.bul.getGlobalBounds().intersects(lvl.rect[4].getGlobalBounds()))
+	{
+		as.bul.move(Vector2f(bulX = std::cos(bulDeg  * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin((bulDeg += 90.0f) * (3.14159f / 160.0f)) * bulSpeed));
+		return true;
+	}
+	if (as.bul.getGlobalBounds().intersects(lvl.rect[5].getGlobalBounds()))
+	{
+		as.bul.move(Vector2f(bulX = std::cos(bulDeg * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin((bulDeg -= 90.0f) * (3.14159f / 160.0f)) * bulSpeed));
+		return true;
+	}
+	if (as.bul.getGlobalBounds().intersects(lvl.rect[6].getGlobalBounds()))
+	{
+		as.bul.move(Vector2f(bulX = std::cos((bulDeg += 90.0f) * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed));
+		return true;
+	}
+	if (as.bul.getGlobalBounds().intersects(lvl.rect[7].getGlobalBounds()))
+	{
+		as.bul.move(Vector2f(bulX = std::cos((bulDeg -= 90.0f) * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed));
+		return true;
+	}
+	if (as.bul.getGlobalBounds().intersects(lvl.rect[8].getGlobalBounds()))
+	{
+		as.bul.move(Vector2f(bulX = std::cos(bulDeg  * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin((bulDeg += 90.0f) * (3.14159f / 160.0f)) * bulSpeed));
+		return true;
+	}
+	if (as.bul.getGlobalBounds().intersects(lvl.rect[9].getGlobalBounds()))
+	{
+		as.bul.move(Vector2f(bulX = std::cos(bulDeg * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin((bulDeg -= 90.0f) * (3.14159f / 160.0f)) * bulSpeed));
+		return true;
+	}
+	if (as.bul.getGlobalBounds().intersects(lvl.rect[10].getGlobalBounds()))
+	{
+		as.bul.move(Vector2f(bulX = std::cos((bulDeg += 90.0f) * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed));
+		return true;
+	}
+	if (as.bul.getGlobalBounds().intersects(lvl.rect[11].getGlobalBounds()))
+	{
+		as.bul.move(Vector2f(bulX = std::cos((bulDeg -= 90.0f) * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed));
+		return true;
+	}
 	return false;
 };
