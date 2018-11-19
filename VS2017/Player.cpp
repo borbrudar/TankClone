@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Level.h"
 #include <cmath>
 
 void Player::inputCtrl(Event event)
@@ -45,15 +46,14 @@ void Player::inputCtrl(Event event)
 			break;
 		}
 	}
-
-	bul.moveCtrl(event);
+		bul.moveCtrl(event, deg);
 }
 
 
-void Player::Draw(RenderWindow &renderWindow,float x,float y)
+void Player::Draw(RenderWindow &renderWindow,Level &lvl,float x,float y)
 {
 	as.s1.setPosition(Vector2f(x, y));
-	bul.Draw(renderWindow, as, x, y, deg);
+	bul.Draw(renderWindow, as,lvl, x, y);
 	renderWindow.draw(as.s1);
 }
 

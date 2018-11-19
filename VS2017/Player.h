@@ -1,4 +1,5 @@
 #pragma once
+#include "Level.h"
 #include <vector>
 #include "Assets.h"
 #include "Bullet.h"
@@ -14,13 +15,14 @@ public:
 	{
 		as.s1.setOrigin(as.s1.getGlobalBounds().width / 2, as.s1.getGlobalBounds().height / 2);
 	}
-	void inputCtrl(Event event);
-	void Draw(RenderWindow &renderWindow,float x,float y);
+	void inputCtrl(Event event); //Handles player input
+	void Draw(RenderWindow &renderWindow,Level &lvl,float x,float y); //Handles drawing
 	//Getters
 	float getX();
 	float getY();
-	Assets as;
+	Assets as; //Single assests objects
 private:
+	//x,y coords,the direction it's pointing to,movement bools
 	float x, y;
 	float deg = 0.0f;
 	float const speed = 5.0f;

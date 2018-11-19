@@ -1,31 +1,64 @@
 #include "Bullet.h"
 #include <cmath>
 
-void Bullet::moveCtrl(Event event)
+void Bullet::moveCtrl(Event event, float deg)
 {
-	if (event.type == Event::KeyPressed)
-	{
-		switch (event.key.code)
+	//Sets fired to true if Space bar is pressed
+		if (!fired)
 		{
-			case Keyboard::Key::Space:
-			fired = true;
-			break;
+			if (event.type == Event::KeyPressed)
+			{
+				switch (event.key.code)
+				{
+				case Keyboard::Key::Space:
+					fired = true;
+					bulDeg = deg;
+					break;
+				}
+			}
 		}
-	}
+	
 }
 
-void Bullet::Draw(RenderWindow & renderWindow,Assets &as ,float bulX, float bulY,float deg)
+void Bullet::Draw(RenderWindow & renderWindow,Assets &as,Level &lvl,float bulX, float bulY)
 {
-	if (!fired)
-	{
-		as.bul.setPosition(Vector2f(bulX, bulY));
-	}
-	else if (fired)
-	{
-		as.bul.move(Vector2f(bulX = std::cos(deg * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(deg * (3.14159f / 160.0f)) * bulSpeed));
-	}
-	
-
-	renderWindow.draw(as.bul);
-	
+	//Draws based on the directon of the firing
+		if (!fired)
+		{
+			as.bul.setPosition(Vector2f(bulX, bulY));
+		}
+		else if (fired)
+		{
+			if (!isColliding(as, lvl))
+			{
+				as.bul.move(Vector2f(bulX = std::cos(bulDeg * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed));
+			}
+			
+			renderWindow.draw(as.bul);
+		}
 }
+
+bool Bullet::isColliding(Assets &as, Level &lvl)
+{
+	if (as.bul.getGlobalBounds().intersects(lvl.rect[0].getGlobalBounds()))
+		{
+			as.bul.move(Vector2f(bulX = std::cos(bulDeg  * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin((bulDeg += 90.0f) * (3.14159f / 160.0f)) * bulSpeed));
+			return true;
+		}
+	if (as.bul.getGlobalBounds().intersects(lvl.rect[1].getGlobalBounds()))
+		{
+			as.bul.move(Vector2f(bulX = std::cos(bulDeg * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin((bulDeg -= 90.0f) * (3.14159f / 160.0f)) * bulSpeed));
+			return true;
+		}
+	if (as.bul.getGlobalBounds().intersects(lvl.rect[2].getGlobalBounds()))
+		{
+			as.bul.move(Vector2f(bulX = std::cos((bulDeg += 90.0f) * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed));
+			return true;
+		}
+	if (as.bul.getGlobalBounds().intersects(lvl.rect[3].getGlobalBounds()))
+		{
+			as.bul.move(Vector2f(bulX = std::cos((bulDeg -= 90.0f) * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed));
+			return true;
+		}
+	return false;
+};

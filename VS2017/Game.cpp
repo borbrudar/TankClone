@@ -5,23 +5,31 @@ void Game::Go()
 	renderWindow.create(VideoMode(screenWidth, screenHeight), "Tank game");
 	renderWindow.setVerticalSyncEnabled(true);
 	renderWindow.setFramerateLimit(60);
+	Color color = Color(192, 192, 192, 255);
+	Clock clock;
 	//GAME LOOP
 	while (renderWindow.isOpen())
 	{
-		Update();
-		renderWindow.clear(Color::Color::White);
-		Draw();
-		renderWindow.display();
+		if (clock.getElapsedTime().asMilliseconds() >= 20)
+		{
+			Update();
+			renderWindow.clear(color);
+			Draw();
+			renderWindow.display();
+			clock.restart();
+		}
 	}
 }
 
 void Game::Draw()
 {
-	player1.Draw(renderWindow, player1.getX(), player1.getY());
+	lvl.Draw(renderWindow);
+	player1.Draw(renderWindow,lvl, player1.getX(), player1.getY());
 }
 
 void Game::Update()
 {
+	//Handles events and player input
 	while (renderWindow.pollEvent(event))
 	{
 		switch (event.type)
