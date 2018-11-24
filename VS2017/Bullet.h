@@ -21,4 +21,5 @@ public:
 private:
 	float bulSpeed = 5.0f; //Speed of the bullet
 	float bulX, bulY, bulDeg; //x and y coord of the bullet,direction
+	Clock despawn_time;
 };

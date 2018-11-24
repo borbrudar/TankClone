@@ -46,15 +46,16 @@ void Player::inputCtrl(Event event,Level &lvl)
 			break;
 		}
 	}
+	
 		bul.moveCtrl(event, deg);
 		collision(as, lvl);
 }
 
 
-void Player::Draw(RenderWindow &renderWindow,Level &lvl,float x,float y)
+void Player::Draw(RenderWindow &renderWindow, Level &lvl, float x, float y)
 {
 	as.s1.setPosition(Vector2f(x, y));
-	bul.Draw(renderWindow, as,lvl,x,y);
+	bul.Draw(renderWindow, as, lvl, x, y);
 	renderWindow.draw(as.s1);
 }
 

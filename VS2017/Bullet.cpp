@@ -19,8 +19,8 @@ void Bullet::moveCtrl(Event event, float deg)
 					break;
 				}
 			}
+			despawn_time.restart();
 		}
-	
 }
 
 void Bullet::Draw(RenderWindow & renderWindow,Assets &as,Level &lvl,float x,float y)
@@ -32,12 +32,13 @@ void Bullet::Draw(RenderWindow & renderWindow,Assets &as,Level &lvl,float x,floa
 		}
 		else if (fired)
 		{
-			
-				isColliding(as, lvl);
-				as.bul.move(Vector2f(bulX, bulY));
-				
-			
+			isColliding(as, lvl);
+			as.bul.move(Vector2f(bulX, bulY));
 			renderWindow.draw(as.bul);
+			if (despawn_time.getElapsedTime().asSeconds() >= 10.0f)
+			{
+				fired = false;
+			}
 		}
 }
 

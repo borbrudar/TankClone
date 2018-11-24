@@ -29,5 +29,5 @@ private:
 	float deg = 0.0f;
 	float const speed = 3.0f;
 	bool upF = false, downF = false, leftF = false, rightF = false;
-	Bullet bul{x,y,as};
+	Bullet bul = {x,y,as};
 };
