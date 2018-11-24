@@ -10,14 +10,10 @@ void Game::Go()
 	//GAME LOOP
 	while (renderWindow.isOpen())
 	{
-		if (clock.getElapsedTime().asMilliseconds() >= 20)
-		{
-			Update();
-			renderWindow.clear(color);
-			Draw();
-			renderWindow.display();
-			clock.restart();
-		}
+		Update();
+		renderWindow.clear(color);
+		Draw();
+		renderWindow.display();
 	}
 }
 

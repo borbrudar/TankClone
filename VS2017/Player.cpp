@@ -54,73 +54,12 @@ void Player::inputCtrl(Event event,Level &lvl)
 void Player::Draw(RenderWindow &renderWindow,Level &lvl,float x,float y)
 {
 	as.s1.setPosition(Vector2f(x, y));
-	bul.Draw(renderWindow, as,lvl, x, y);
+	bul.Draw(renderWindow, as,lvl,x,y);
 	renderWindow.draw(as.s1);
 }
 
 void Player::collision(Assets & as, Level & lvl)
 {
-
-	if (as.s1.getGlobalBounds().intersects(lvl.rect[0].getGlobalBounds()))
-	{
-		x -= 2;
-		y -= 2;
-	}
-	if (as.s1.getGlobalBounds().intersects(lvl.rect[1].getGlobalBounds()))
-	{
-		x -= 2;
-		y -= 2;
-	}
-	if (as.s1.getGlobalBounds().intersects(lvl.rect[2].getGlobalBounds()))
-	{
-		x -= 2;
-		y -= 2;
-	}
-	if (as.s1.getGlobalBounds().intersects(lvl.rect[3].getGlobalBounds()))
-	{
-		x -= 2;
-		y -= 2;
-	}
-	if (as.s1.getGlobalBounds().intersects(lvl.rect[4].getGlobalBounds()))
-	{
-		x -= 2;
-		y -= 2;
-	}
-	if (as.s1.getGlobalBounds().intersects(lvl.rect[5].getGlobalBounds()))
-	{
-		x -= 2;
-		y -= 2;
-	}
-	if (as.s1.getGlobalBounds().intersects(lvl.rect[6].getGlobalBounds()))
-	{
-		x -= 2;
-		y -= 2;
-	}
-	if (as.s1.getGlobalBounds().intersects(lvl.rect[7].getGlobalBounds()))
-	{
-		x -= 2;
-		y -= 2;
-	}
-	if (as.s1.getGlobalBounds().intersects(lvl.rect[8].getGlobalBounds()))
-	{
-		x -= 2;
-		y -= 2;
-	}
-	if (as.s1.getGlobalBounds().intersects(lvl.rect[9].getGlobalBounds()))
-	{
-		x -= 2;
-		y -= 2;
-	}
-	if (as.s1.getGlobalBounds().intersects(lvl.rect[10].getGlobalBounds()))
-	{
-		x -= 2;
-		y -= 2;
-	}
-	if (as.s1.getGlobalBounds().intersects(lvl.rect[11].getGlobalBounds()))
-	{
-		x -= 2;
-		y -= 2;
-	}
 }
 
 float Player::getX()

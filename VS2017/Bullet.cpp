@@ -3,6 +3,7 @@
 
 void Bullet::moveCtrl(Event event, float deg)
 {
+	bulDeg = deg;
 	//Sets fired to true if Space bar is pressed
 		if (!fired)
 		{
@@ -13,6 +14,8 @@ void Bullet::moveCtrl(Event event, float deg)
 				case Keyboard::Key::Space:
 					fired = true;
 					bulDeg = deg;
+					bulX = std::cos(bulDeg * (3.14159f / 180.0f)) * bulSpeed;
+					bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed;
 					break;
 				}
 			}
@@ -20,85 +23,36 @@ void Bullet::moveCtrl(Event event, float deg)
 	
 }
 
-void Bullet::Draw(RenderWindow & renderWindow,Assets &as,Level &lvl,float bulX, float bulY)
+void Bullet::Draw(RenderWindow & renderWindow,Assets &as,Level &lvl,float x,float y)
 {
 	//Draws based on the directon of the firing
 		if (!fired)
 		{
-			as.bul.setPosition(Vector2f(bulX, bulY));
+			as.bul.setPosition(Vector2f(x, y));
 		}
 		else if (fired)
 		{
-			if (!isColliding(as, lvl))
-			{
-				as.bul.move(Vector2f(bulX = std::cos(bulDeg * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed));
-			}
+			
+				isColliding(as, lvl);
+				as.bul.move(Vector2f(bulX, bulY));
+				
 			
 			renderWindow.draw(as.bul);
 		}
 }
 
-bool Bullet::isColliding(Assets &as, Level &lvl)
+void Bullet::isColliding(Assets &as, Level &lvl)
 {
-	if (as.bul.getGlobalBounds().intersects(lvl.rect[0].getGlobalBounds()))
+	for (int i = 0; i < 12; i++)
+	{
+		if (as.bul.getGlobalBounds().intersects(lvl.rectR[i].getGlobalBounds()) || as.bul.getGlobalBounds().intersects(lvl.rectL[i].getGlobalBounds()))
 		{
-			as.bul.move(Vector2f(bulX = std::cos(bulDeg  * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin((bulDeg += 90.0f) * (3.14159f / 160.0f)) * bulSpeed));
-			return true;
+			bulX = -bulX;
 		}
-	if (as.bul.getGlobalBounds().intersects(lvl.rect[1].getGlobalBounds()))
+		if (as.bul.getGlobalBounds().intersects(lvl.rectT[i].getGlobalBounds()) || as.bul.getGlobalBounds().intersects(lvl.rectB[i].getGlobalBounds()))
 		{
-			as.bul.move(Vector2f(bulX = std::cos(bulDeg * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin((bulDeg -= 90.0f) * (3.14159f / 160.0f)) * bulSpeed));
-			return true;
+			bulY = -bulY;
 		}
-	if (as.bul.getGlobalBounds().intersects(lvl.rect[2].getGlobalBounds()))
-		{
-			as.bul.move(Vector2f(bulX = std::cos((bulDeg += 90.0f) * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed));
-			return true;
-		}
-	if (as.bul.getGlobalBounds().intersects(lvl.rect[3].getGlobalBounds()))
-		{
-			as.bul.move(Vector2f(bulX = std::cos((bulDeg -= 90.0f) * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed));
-			return true;
-		}
-	if (as.bul.getGlobalBounds().intersects(lvl.rect[4].getGlobalBounds()))
-	{
-		as.bul.move(Vector2f(bulX = std::cos(bulDeg  * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin((bulDeg += 90.0f) * (3.14159f / 160.0f)) * bulSpeed));
-		return true;
 	}
-	if (as.bul.getGlobalBounds().intersects(lvl.rect[5].getGlobalBounds()))
-	{
-		as.bul.move(Vector2f(bulX = std::cos(bulDeg * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin((bulDeg -= 90.0f) * (3.14159f / 160.0f)) * bulSpeed));
-		return true;
-	}
-	if (as.bul.getGlobalBounds().intersects(lvl.rect[6].getGlobalBounds()))
-	{
-		as.bul.move(Vector2f(bulX = std::cos((bulDeg += 90.0f) * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed));
-		return true;
-	}
-	if (as.bul.getGlobalBounds().intersects(lvl.rect[7].getGlobalBounds()))
-	{
-		as.bul.move(Vector2f(bulX = std::cos((bulDeg -= 90.0f) * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed));
-		return true;
-	}
-	if (as.bul.getGlobalBounds().intersects(lvl.rect[8].getGlobalBounds()))
-	{
-		as.bul.move(Vector2f(bulX = std::cos(bulDeg  * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin((bulDeg += 90.0f) * (3.14159f / 160.0f)) * bulSpeed));
-		return true;
-	}
-	if (as.bul.getGlobalBounds().intersects(lvl.rect[9].getGlobalBounds()))
-	{
-		as.bul.move(Vector2f(bulX = std::cos(bulDeg * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin((bulDeg -= 90.0f) * (3.14159f / 160.0f)) * bulSpeed));
-		return true;
-	}
-	if (as.bul.getGlobalBounds().intersects(lvl.rect[10].getGlobalBounds()))
-	{
-		as.bul.move(Vector2f(bulX = std::cos((bulDeg += 90.0f) * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed));
-		return true;
-	}
-	if (as.bul.getGlobalBounds().intersects(lvl.rect[11].getGlobalBounds()))
-	{
-		as.bul.move(Vector2f(bulX = std::cos((bulDeg -= 90.0f) * (3.14159f / 180.0f)) * bulSpeed, bulY = std::sin(bulDeg * (3.14159f / 160.0f)) * bulSpeed));
-		return true;
-	}
-	return false;
-};
+}
+
