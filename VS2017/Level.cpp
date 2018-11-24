@@ -171,10 +171,10 @@ void Level::setRect()
 			rectR[7].rotate(90.0f);
 				  
 			rectT[7].setSize(Vector2f(125.0f, 1.0f));
-			rectT[7].move(Vector2f(175.0f, 365.0f));
+			rectT[7].move(Vector2f(175.0f, 355.0f));
 				  
 			rectB[7].setSize(Vector2f(125.0f, 1.0f));
-			rectB[7].move(Vector2f(175.0f, 355.0f));
+			rectB[7].move(Vector2f(175.0f, 365.0f));
 		}
 		//Rect8
 		{

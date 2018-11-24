@@ -12,7 +12,7 @@ public:
 		bulY(y)
 	{
 		as.bul.setOrigin(as.bul.getGlobalBounds().width / 2, as.bul.getGlobalBounds().height / 2);
-		as.bul.setScale(0.5f, 0.5f);
+		as.bul.setScale(0.3f, 0.3f);
 	}
 	void moveCtrl(Event event,float deg); //Handles movement
 	void Draw(RenderWindow &renderWindow, Assets &as,Level &lvl, float x,float y); //Handles drawing

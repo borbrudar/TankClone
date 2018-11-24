@@ -60,6 +60,17 @@ void Player::Draw(RenderWindow &renderWindow,Level &lvl,float x,float y)
 
 void Player::collision(Assets & as, Level & lvl)
 {
+	for (int i = 0; i < 12; i++)
+	{
+		if (as.s1.getGlobalBounds().intersects(lvl.rectR[i].getGlobalBounds()) || as.s1.getGlobalBounds().intersects(lvl.rectL[i].getGlobalBounds()))
+		{
+			x -= 4.0f;
+		}
+		if (as.s1.getGlobalBounds().intersects(lvl.rectT[i].getGlobalBounds()) || as.s1.getGlobalBounds().intersects(lvl.rectB[i].getGlobalBounds()))
+		{
+			y += 5.0f;
+		}
+	}
 }
 
 float Player::getX()
