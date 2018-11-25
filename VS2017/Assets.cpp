@@ -12,7 +12,11 @@ void Assets::loadTextures()
 void Assets::loadSprites()
 {
 	s1.setTexture(t1);
-	bul.setTexture(bulT);
+	for (int i = 0; i < 5; i++)
+	{
+		bul[i].setTexture(bulT);
+	}
+
 }
 
 

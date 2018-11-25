@@ -19,7 +19,7 @@ private:
 public:
 	Sprite s1;
 	Sprite s2;
-	Sprite bul;
+	Sprite bul[5];
 public:
 	void loadTextures();
 	void loadSprites();

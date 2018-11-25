@@ -46,16 +46,24 @@ void Player::inputCtrl(Event event,Level &lvl)
 			break;
 		}
 	}
-	
-		bul.moveCtrl(event, deg);
-		collision(as, lvl);
+	for (int i = 0; i < 5; i++)
+	{
+		if (time.getElapsedTime().asMilliseconds() >= 50.0f)
+		{
+			bul[i].moveCtrl(event, deg,time);
+		}
+	}
+	collision(as, lvl);
 }
 
 
 void Player::Draw(RenderWindow &renderWindow, Level &lvl, float x, float y)
 {
-	as.s1.setPosition(Vector2f(x, y));
-	bul.Draw(renderWindow, as, lvl, x, y);
+	as.s1.setPosition(Vector2f(x, y)); 
+	for (int i = 0;i < 5;i++)
+	{
+		bul[i].Draw(renderWindow, as, lvl, x, y,i);
+	}
 	renderWindow.draw(as.s1);
 }
 
@@ -63,11 +71,19 @@ void Player::collision(Assets & as, Level & lvl)
 {
 	for (int i = 0; i < 12; i++)
 	{
-		if (as.s1.getGlobalBounds().intersects(lvl.rectR[i].getGlobalBounds()) || as.s1.getGlobalBounds().intersects(lvl.rectL[i].getGlobalBounds()))
+		if (as.s1.getGlobalBounds().intersects(lvl.rectL[i].getGlobalBounds()))
 		{
 			x -= 4.0f;
 		}
-		if (as.s1.getGlobalBounds().intersects(lvl.rectT[i].getGlobalBounds()) || as.s1.getGlobalBounds().intersects(lvl.rectB[i].getGlobalBounds()))
+		if (as.s1.getGlobalBounds().intersects(lvl.rectR[i].getGlobalBounds()))
+		{
+			x += 4.0f;
+		}
+		if (as.s1.getGlobalBounds().intersects(lvl.rectT[i].getGlobalBounds()))
+		{
+			y -= 5.0f;
+		}
+		if (as.s1.getGlobalBounds().intersects(lvl.rectB[i].getGlobalBounds()))
 		{
 			y += 5.0f;
 		}
