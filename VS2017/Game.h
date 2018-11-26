@@ -16,6 +16,8 @@ public:
 	Level lvl;
 private:
 	Player player1{200.0f,100.0f};
+	float thickness = 10.0f;
+	float hitT = 1.0f;
 public:
 	//Functions
 	void Go();
