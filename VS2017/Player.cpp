@@ -23,8 +23,8 @@ void Player::inputCtrl(Event event,Level &lvl)
 		}
 	}
 
-	if (upF) as.s1.setPosition(x += (float)std::cos(deg * (3.14159 / 180.0f)) * speed,y += (float)std::sin(deg * (3.14158 / 180.0f)) * speed);
-	if (downF) as.s1.setPosition(x += -(float)(std::cos(deg * (3.14159 / 180.0f)) * (speed / 2)),y += -(float)(std::sin(deg * (3.14158 / 180.0f)) * (speed / 2)));
+	if (upF) as.s1.setPosition(x += (float)std::cos(deg * (3.14159 / 180.0f)) * speed, y += (float)std::sin(deg * (3.14158 / 180.0f)) * speed);
+	if (downF) as.s1.setPosition(x += -(float)(std::cos(deg * (3.14159 / 180.0f)) * (speed / 2)), y += -(float)(std::sin(deg * (3.14158 / 180.0f)) * (speed / 2)));
 	if (leftF) as.s1.setRotation(deg -= 4.0f);
 	if (rightF) as.s1.setRotation(deg += 4.0f);
 
@@ -48,7 +48,7 @@ void Player::inputCtrl(Event event,Level &lvl)
 	}
 	for (int i = 0; i < 5; i++)
 	{
-		if (time.getElapsedTime().asMilliseconds() >= 50.0f && bul[i].fired)
+		if (time.getElapsedTime().asMilliseconds() >= 50.0f)
 		{
 			bul[i].moveCtrl(event, deg,time);
 		}
@@ -62,7 +62,7 @@ void Player::Draw(RenderWindow &renderWindow, Level &lvl, float x, float y)
 	as.s1.setPosition(Vector2f(x, y)); 
 	for (int i = 0;i < 5;i++)
 	{
-		bul[i].Draw(renderWindow, as, lvl, x, y, i);
+		bul[i].Draw(renderWindow, as, lvl, x, y,i);
 	}
 	renderWindow.draw(as.s1);
 }
