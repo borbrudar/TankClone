@@ -7,11 +7,10 @@ class Player
 {
 public:
 	Player() = default;
-	Player(float x, float y,int player)
+	Player(float x, float y)
 		:
 	x(x),
-	y(y),
-	player(player)
+	y(y)
 	{
 		as.s1.setOrigin(as.s1.getGlobalBounds().width / 2, as.s1.getGlobalBounds().height / 2);
 		as.s1.setScale(0.75f, 0.75f);
@@ -31,5 +30,4 @@ private:
 	bool upF = false, downF = false, leftF = false, rightF = false;
 	Bullet bul[5] = { {x,y,as,0},{ x,y,as,1 },{ x,y,as,2 },{ x,y,as,3 },{ x,y,as,4 } };
 	Clock time;
-	int player;
 };

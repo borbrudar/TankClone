@@ -36,7 +36,6 @@ void Game::Draw()
 	if (state == State::Game)
 	{
 		player1.Draw(renderWindow, lvl, player1.getX(), player1.getY());
-		player2.Draw(renderWindow, lvl, player2.getX(), player2.getY());
 		lvl.Draw(renderWindow);
 	}
 	if (state == State::Menu)   menu.Draw(renderWindow);
@@ -54,12 +53,8 @@ void Game::Update()
 		}
 
 
-		if (state == State::Game)
-		{
-			player1.inputCtrl(event, lvl);
-			player2.inputCtrl(event, lvl);
-		}
-			if (state == State::Menu)
+		if(state == State::Game)	player1.inputCtrl(event,lvl);
+		if (state == State::Menu)
 		{
 			if (menu.Update(renderWindow) == 1) state = State::Game;
 		

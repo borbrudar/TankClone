@@ -14,7 +14,7 @@ public:
 		as.bul[i].setOrigin(as.bul[i].getGlobalBounds().width / 2, as.bul[i].getGlobalBounds().height / 2);
 		as.bul[i].setScale(0.3f, 0.3f);
 	}
-	void moveCtrl(Event event,float deg,Clock &cl,int player); //Handles movement
+	void moveCtrl(Event event,float deg,Clock &cl); //Handles movement
 	void Draw(RenderWindow &renderWindow, Assets &as,Level &lvl, float x,float y,int i); //Handles drawing
 	void isColliding(Assets &as,Level &lvl,int y);
 	bool fired = false;   
