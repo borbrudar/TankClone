@@ -1,23 +1,40 @@
 #include "Bullet.h"
 #include <cmath>
 
-void Bullet::moveCtrl(Event event, float deg,Clock &time)
+void Bullet::moveCtrl(Event event, float deg,Clock &time,int player)
 {
 	bulDeg = deg;
 	//Sets fired to true if Space bar is pressed
 		if (!fired)
 		{
+			
 			if (event.type == Event::KeyReleased)
 			{
+				if (player == 1)
+				{
 				switch (event.key.code)
 				{
-				case Keyboard::Key::Space:
- 					fired = true;
+				case Keyboard::Key::M:
+					fired = true;
 					bulX = std::cos(bulDeg * (3.14159f / 180.0f)) * bulSpeed;
 					bulY = std::sin(bulDeg * (3.14159f / 180.0f)) * bulSpeed;
 					time.restart();
 					despawn_time.restart();
 					break;
+					}
+				}
+				if (player == 2)
+				{
+					switch (event.key.code)
+					{
+					case Keyboard::Key::E:
+						fired = true;
+						bulX = std::cos(bulDeg * (3.14159f / 180.0f)) * bulSpeed;
+						bulY = std::sin(bulDeg * (3.14159f / 180.0f)) * bulSpeed;
+						time.restart();
+						despawn_time.restart();
+						break;
+					}
 				}
 			}
 			despawn_time.restart();

@@ -23,7 +23,8 @@ public:
 	Level lvl;
 	State state = State::Menu;
 private:
-	Player player1{200.0f,100.0f};
+	Player player1{200.0f,100.0f,1};
+	Player player2{ 250.0f,100.0f,2 };
 	float thickness = 10.0f;
 	float hitT = 1.0f;
 	Menu menu;
