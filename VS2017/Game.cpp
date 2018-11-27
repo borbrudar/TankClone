@@ -33,8 +33,12 @@ void Game::Go()
 
 void Game::Draw()
 {
-	player1.Draw(renderWindow,lvl, player1.getX(), player1.getY());
-	lvl.Draw(renderWindow);
+	if (state == State::Game)
+	{
+		player1.Draw(renderWindow, lvl, player1.getX(), player1.getY());
+		lvl.Draw(renderWindow);
+	}
+	if (state == State::Menu)   menu.Draw(renderWindow);
 }
 
 void Game::Update()
@@ -47,7 +51,14 @@ void Game::Update()
 		case Event::Closed:
 			renderWindow.close();
 		}
-		player1.inputCtrl(event,lvl);
+
+
+		if(state == State::Game)	player1.inputCtrl(event,lvl);
+		if (state == State::Menu)
+		{
+			if (menu.Update(renderWindow) == 1) state = State::Game;
+		
+		}
 	}
 }
 
