@@ -37,6 +37,11 @@ void Game::Draw()
 	{
 		player1.Draw(renderWindow, lvl, player1.getX(), player1.getY());
 		lvl.Draw(renderWindow);
+		ai.Draw(renderWindow);
+		if (Keyboard::isKeyPressed(Keyboard::T))
+		{
+			state = State::Menu;
+		}
 	}
 	if (state == State::Menu)   menu.Draw(renderWindow);
 }
@@ -53,7 +58,11 @@ void Game::Update()
 		}
 
 
-		if(state == State::Game)	player1.inputCtrl(event,lvl);
+		if (state == State::Game) 
+		{
+		player1.inputCtrl(event, lvl);
+		ai.Update(event, lvl, player1.getX(), player1.getY(), renderWindow);
+		}
 		if (state == State::Menu)
 		{
 			if (menu.Update(renderWindow) == 1) state = State::Game;

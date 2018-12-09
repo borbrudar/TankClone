@@ -15,9 +15,10 @@ public:
 		as.bul[i].setScale(0.3f, 0.3f);
 	}
 	void moveCtrl(Event event,float deg,Clock &cl); //Handles movement
+	void aiCtrl(RenderWindow & renderWindow, Assets &as, Level &lvl, float x, float y, int i,float deg);
 	void Draw(RenderWindow &renderWindow, Assets &as,Level &lvl, float x,float y,int i); //Handles drawing
 	void isColliding(Assets &as,Level &lvl,int y);
-	bool fired = false;   
+	bool fired = false;
 private:
 	float bulSpeed = 5.0f; //Speed of the bullet
 	float bulX, bulY, bulDeg; //x and y coord of the bullet,direction

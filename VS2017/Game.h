@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Level.h"
 #include "Menu.h"
+#include "AI.h"
 
 using namespace sf;
 
@@ -24,6 +25,7 @@ public:
 	State state = State::Menu;
 private:
 	Player player1{200.0f,100.0f};
+	AI ai{ 400.0f,400.0f };
 	float thickness = 10.0f;
 	float hitT = 1.0f;
 	Menu menu;

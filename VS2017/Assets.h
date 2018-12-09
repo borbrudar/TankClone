@@ -12,13 +12,13 @@ public:
 		loadSprites();
 	}
 private:
-	Texture error;
+	Texture a;
 	Texture t1;
 	Texture bulT;
 	Texture side1;
 public:
 	Sprite s1;
-	Sprite s2;
+	Sprite ai;
 	Sprite bul[5];
 public:
 	void loadTextures();
